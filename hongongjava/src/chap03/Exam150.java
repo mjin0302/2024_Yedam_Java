@@ -1,4 +1,4 @@
-package chanp03;
+package chap03;
 
 import java.util.Scanner;
 

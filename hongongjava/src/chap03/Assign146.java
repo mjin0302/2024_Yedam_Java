@@ -1,4 +1,4 @@
-package chanp03;
+package chap03;
 
 public class Assign146 {
 	public static void main(String[] args) {
