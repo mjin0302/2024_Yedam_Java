@@ -160,24 +160,7 @@ public class Doself {
 		}
 		
 		// 7. 3, 6, 9게임 프로그램
-		// 1~50까지 3, 6, 9가 들어가는 숫자마다 3, 6, 9가 들어가 있는 개수 만큼 ♥출력하는 프로그램 작성
-		
-//		String heart = "♥";
-//		
-//		for(int i = 1; i <= 50; i++) {
-//			if(i % 10 == 3 || i % 10 == 6 || i % 10 == 9) {
-//				System.out.printf("%2s ", heart);
-//			} else if(i / 10 == 3 || i / 10 == 6 || i / 10 == 9) {
-//				heart += "♥";
-//				System.out.printf("%2s ", heart);
-//			} else {
-//				System.out.printf("%2d ", i);
-//			}
-//			if(i % 10 == 0) {
-//				System.out.println();
-//			}
-//		}
-		
+		// 1~50까지 3, 6, 9가 들어가는 숫자마다 3, 6, 9가 들어가 있는 개수 만큼 ♥출력하는 프로그램 작성		
 		System.out.print("몇번까지 돌릴래? > ");
 		
 		int num = Integer.parseInt(sc.nextLine());
