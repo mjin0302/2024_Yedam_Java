@@ -67,6 +67,7 @@ public class Array {
 			System.out.println();
 		}
 		System.out.println("현재 관객수는 : " + count);
+		
 		System.out.println();
 		System.out.println("==================================================");
 		System.out.println();
@@ -94,6 +95,7 @@ public class Array {
 			avg = total[i] / scores[i].length;
 			System.out.printf("%4d 번째 학생의 평균: %d\n", i, avg);
 		}
+		
 		System.out.println();
 		System.out.println("==================================================");
 		System.out.println();
@@ -120,26 +122,32 @@ public class Array {
         }
 		System.out.println(Arrays.toString(word) + " " + Arrays.toString(indexNum));
 		System.out.printf("%s의 %s\n", word[0], word[1]);
+		
 		System.out.println();
 		System.out.println("==================================================");
 		System.out.println();
 
 		// 6. 2차원 배열 만들기
 		// • 3*5 크기의 2차원 배열 생성하고 초기값은 0으로 초기화
-		int[][] intNums = new int[3][5];
+		int[][] intNums = new int[3][5]; // 0
 		int cnt = 0;
 		// • 5개의 정수 1을 랜덤하게 배치
+		while(true) {
+			int row = (int)(Math.random() * intNums.length); // 0 0 0  3
+			int col = (int)(Math.random() * intNums[row].length); // 0 0 0 0 0 5
+			
+			intNums[row][col] = 1;
+			
+			if(cnt < 5) cnt++;
+			else if (cnt >= 5) break;
+			
+		}
 		for(int i = 0; i < intNums.length; i++) {
 			for(int j = 0; j < intNums[i].length; j++) {
-				if(cnt > 5) break;
-				intNums[i][j] = (int)(Math.random() * 2);
-				
-				if(intNums[i][j] == 1) cnt++;
 				System.out.print(intNums[i][j] + "\t");
 			}
 			System.out.println();
 		}
-		System.out.println(cnt);
 		// • 최종 배열 출력
 
 	} // End Main
