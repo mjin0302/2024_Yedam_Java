@@ -37,12 +37,6 @@ public class StudentMain {
 			System.out.println();
 		}
 		
-		
-		
-//		System.out.print("이름: " + st3.name);
-//		System.out.printf("이름 : %s 국어: %d 영어: %d 수학: %d\t", st3.name, st3.kor, st3.eng, st3.math);
-//		System.out.printf("총점: %d 평균: %.2f 등급: %s", st3.totalScore(), st3.average(), st3.grade());
-		
 	}
 
 }
