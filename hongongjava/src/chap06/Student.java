@@ -9,11 +9,6 @@ public class Student {
 	int eng;
 	int math;
 	
-	// 총점, 평균, 등급 변수
-	int total;
-	double avg;
-	int grade;
-	
 	// 생성자(객체 생성) -> 객체의 속성을 초기화
 	// 매게 변수가 우선권을 가짐
 	// !! 생성자는 리턴값이 없고 클래스 이름과 같아야함
@@ -37,8 +32,7 @@ public class Student {
 	}
 	
 	int totalScore () {
-		total =  kor + eng + math;
-		return total;
+		return kor + eng + math;
 	}
 	
 	double average() {
