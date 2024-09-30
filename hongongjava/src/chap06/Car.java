@@ -5,20 +5,59 @@ public class Car {
 	String company = "현대자동차";
 	String model = "그랜저";
 	String color = "검정";
-	int maxSpeed = 350;
-	int speed;
-	int gas;
+	private int maxSpeed = 350;
+	private int speed;
+	private int gas;
+	private boolean stop;
 	
 	// 생성자
 	// 메소드
-	void setGas(int gas) {
+//	void setGas(int gas) {
+//		this.gas = gas;
+//	}
+//	
+//	int getSpeed() {
+//		return speed;
+//	}
+	
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		if(speed < 0) {
+			this.speed = 0;
+			return;
+		} else {			
+			this.speed = speed;
+		}
+	}
+
+	public int getGas() {
+		return gas;
+	}
+
+	public void setGas(int gas) {
 		this.gas = gas;
 	}
 	
-	int getSpeed() {
-		return speed;
+	public int getMaxSpeed() {
+		return maxSpeed;
 	}
-	
+
+	public void setMaxSpeed(int maxSpeed) {
+		this.maxSpeed = maxSpeed;
+	}
+
+	public boolean isStop() {
+		return stop;
+	}
+
+	public void setStop(boolean stop) {
+		this.stop = stop;
+		this.speed = 0;
+	}
+
 	// 가스 존재 여부 체크
 	boolean isLeftGas() {
 		if(gas == 0) {
@@ -50,6 +89,6 @@ public class Car {
 			speed = i;
 			System.out.println("달립니다.(시속 : " + speed);
 		}
-	}
+	} // End run2
 	
 } //End Main

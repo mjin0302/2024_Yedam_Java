@@ -10,12 +10,12 @@ public class CarMain {
 		System.out.println("제작회사: " + myCar.company);
 		System.out.println("모델명: " + myCar.model);
 		System.out.println("색깔: " + myCar.color);
-		System.out.println("최고속도: " + myCar.maxSpeed);
-		System.out.println("현재속도: " + myCar.speed);
+		System.out.println("최고속도: " + myCar.getMaxSpeed());
+		System.out.println("현재속도: " + myCar.getSpeed());
 		
 		// 필드값 변경
-		myCar.speed = 60;
-		System.out.println("수정된 속도: " + myCar.speed);
+		myCar.setSpeed(60)             ;
+		System.out.println("수정된 속도: " + myCar.getSpeed());
 		myCar.color = "흰색";
 		System.out.println("수정된 색: " + myCar.color);
 		
@@ -41,6 +41,21 @@ public class CarMain {
 		int speed = myCar.getSpeed();
 		System.out.println("현재 속도: " + speed + "km/h");
 		
+		// p327
+		// 잘못된 속도 변경
+		myCar.setSpeed(-50);
+		
+		System.out.println("현재 속도: " + myCar.getSpeed());
+		
+		// 올바른 속도 ㅂㄴ경
+		myCar.setSpeed(60);
+		
+		// 멈춤
+		if(!myCar.isStop()) {
+			myCar.setStop(true);
+		}
+		
+		System.out.println("현재 속도: " + myCar.getSpeed());
 
 	}
 
