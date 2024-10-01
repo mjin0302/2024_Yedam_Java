@@ -29,20 +29,26 @@ public class BankApp {
 				System.out.println("---------------");
 				System.out.println("계좌 생성");
 				System.out.println("---------------");
+				
 				System.out.print("계좌 번호 : ");
 				ano = sc.nextLine();
+				
 				System.out.print("계좌주 : ");
 				owner = sc.nextLine();
-				System.out.print("초기입금액 : ");
+				
+				System.out.print("초기 입금액 : ");
 				balence = Integer.parseInt(sc.nextLine());
 				
 				for(int i = 0; i < accounts.length; i++) {
 					if(accounts[i] == null) {
-						
-						accounts[i] = new Account(ano, owner, balence);
-						
-						System.out.println("계좌가 성공적으로 생성되었습니다.");
-						break;
+						if(!accounts[i].getAno().equals(ano)) {
+							accounts[i] = new Account(ano, owner, balence);
+							
+							System.out.println("계좌가 성공적으로 생성되었습니다.");
+							break;
+						} else {
+							System.out.println("입력하신 계좌가 존재합니다. 다른 계좌번호를 입력하세요.");
+						}
 					}
 				}
 				break;
