@@ -14,7 +14,7 @@ public class BankApp {
 		String owner;
 		int balence;
 		
-		int money;
+		int money; // 예금, 출금 받는 변수
 		
 		while (stop) {
 			System.out.println("-----------------------------------------------------------------");
@@ -108,7 +108,7 @@ public class BankApp {
 				break;
 				
 			default:
-				
+				System.out.println("선택한 메뉴는 존재하지 않습니다. 다시 선택 하세요.");
 				break;
 			}
 		}
