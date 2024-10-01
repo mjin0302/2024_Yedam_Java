@@ -3,14 +3,18 @@ package 김민진;
 public class Account {
 	
 	// field
-	private String ano;
-	private String owner;
-	private int balence;
-	public int MIN_BALANCE = 0;
-	public int MAX_BALANCE = 1000000;
+	private String ano;					// 계좌번호
+	private String owner;				// 소유자
+	private int balence;				// 잔액
+	public  int MIN_BALANCE = 0;		// 잔액 최소값
+	public  int MAX_BALANCE = 1000000;	// 잔액 최대값
 	
+	private int inputAno;
+	private Account[] accounts;
 
 	// constructor
+	public Account() {};
+	
 	public Account(String ano, String owner, int balence) {
 		this.ano = ano;
 		this.owner = owner;
@@ -18,6 +22,15 @@ public class Account {
 	};
 
 	// method
+	public boolean isAnoMatch(String ano) {
+		if(!this.ano.equals(ano)) {
+			return true;
+		} else {
+			return false;
+		}
+	    //return this.ano.equals(ano);  
+	}
+	
 	public String getAno() {
 		return ano;
 	}

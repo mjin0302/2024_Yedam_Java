@@ -8,11 +8,11 @@ public class BankApp {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		boolean stop = true;
-		Account[] accounts = new Account[100];
-		String ano;
-		String owner;
-		int balence;
+		boolean   stop = true;	// while문 제어
+		Account[] accounts = new Account[100];	// Account 담을 배열 변수
+		String 	  ano;			// 계좌번호
+		String 	  owner;		// 소유자
+		int 	  balence;		// 금액
 		
 		int money; // 예금, 출금 받는 변수
 		
@@ -32,6 +32,13 @@ public class BankApp {
 				
 				System.out.print("계좌 번호 : ");
 				ano = sc.nextLine();
+				// 입력받은 계좌번호와 accounts의 값을 비교하는 메소드
+				Account aco = new Account();
+				aco.setAno(ano);
+				if(aco.isAnoMatch(ano) == false) {
+					System.out.println("이미 존재하는 계좌번호입니다.");
+					break;
+				} 
 				
 				System.out.print("계좌주 : ");
 				owner = sc.nextLine();
@@ -41,17 +48,14 @@ public class BankApp {
 				
 				for(int i = 0; i < accounts.length; i++) {
 					if(accounts[i] == null) {
-						if(!accounts[i].getAno().equals(ano)) {
-							accounts[i] = new Account(ano, owner, balence);
-							
-							System.out.println("계좌가 성공적으로 생성되었습니다.");
-							break;
-						} else {
-							System.out.println("입력하신 계좌가 존재합니다. 다른 계좌번호를 입력하세요.");
-						}
+						accounts[i] = new Account(ano, owner, balence);
+						
+						System.out.println("계좌가 성공적으로 생성되었습니다.");
+						break;
 					}
 				}
 				break;
+				
 			case 2:
 				for(Account acc : accounts) {
 					if(accounts != null) {
