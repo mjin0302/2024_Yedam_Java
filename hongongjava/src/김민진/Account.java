@@ -9,8 +9,8 @@ public class Account {
 	public  int MIN_BALANCE = 0;		// 잔액 최소값
 	public  int MAX_BALANCE = 1000000;	// 잔액 최대값
 	
-	private int inputAno;
-	private Account[] accounts;
+	//private int inputAno;
+	//private Account[] accounts;
 
 	// constructor
 	public Account() {};
@@ -21,15 +21,15 @@ public class Account {
 		this.balence = balence;
 	};
 
-	// method
-	public boolean isAnoMatch(String ano) {
-		if(!this.ano.equals(ano)) {
-			return true;
-		} else {
-			return false;
-		}
-	    //return this.ano.equals(ano);  
-	}
+//	// method
+//	public boolean isAnoMatch(String ano) {
+//		if(!this.ano.equals(ano)) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	    //return this.ano.equals(ano);  
+//	}
 	
 	public String getAno() {
 		return ano;

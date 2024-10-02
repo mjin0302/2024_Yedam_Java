@@ -35,10 +35,6 @@ public class BankApp {
 				// 입력받은 계좌번호와 accounts의 값을 비교하는 메소드
 				Account aco = new Account();
 				aco.setAno(ano);
-				if(aco.isAnoMatch(ano) == false) {
-					System.out.println("이미 존재하는 계좌번호입니다.");
-					break;
-				} 
 				
 				System.out.print("계좌주 : ");
 				owner = sc.nextLine();
@@ -85,7 +81,6 @@ public class BankApp {
 				break;
 				
 			case 4:
-				
 				System.out.print("출금하실 계좌번호를 입력하세요. > ");
 				inputAno = sc.nextLine();
 				
@@ -95,10 +90,10 @@ public class BankApp {
 						System.out.print(acc.getOwner() + "님, 출금하실 금액을 입력하세요. > ");
 						money = Integer.parseInt(sc.nextLine());
 						
-						if(acc.getBalence() > money) {
+						if(acc.getBalence() >= money) {
 							
 							acc.setBalence(acc.getBalence() - money);
-							System.out.println(money + "출금 되었습니다. 잔액은 " + acc.getBalence() + "입니다.");
+							System.out.println(money + "출금 되었습니다. 잔액은 " + acc.getBalence() + "원 입니다.");
 							break;
 						} else {
 							System.out.println("잔액을 확인하세요.");
@@ -112,7 +107,6 @@ public class BankApp {
 				break;
 				
 			case 5:
-				
 				System.out.println("Program End");
 				stop = false;
 				break;
@@ -120,8 +114,11 @@ public class BankApp {
 			default:
 				System.out.println("선택한 메뉴는 존재하지 않습니다. 다시 선택 하세요.");
 				break;
-			}
-		}
-	}
+			} // End Switch
+			
+		} // End While
+		
+		sc.close();
+	} // End Main
 
-}
+} // End Class
