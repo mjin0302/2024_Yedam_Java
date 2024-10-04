@@ -36,7 +36,7 @@ public class UpdateMain {
 			System.out.println("수정된 갯수 : " + rows);
 			
 //			if(rows > 0) {
-				// SELECT문의 결과를 저장하는 객체
+				//
 //				ResultSet rs = pstmt.getGeneratedKeys();	// 데이터베이스의 값을 가져오는 것
 //				
 //				if(rs.next()) {
