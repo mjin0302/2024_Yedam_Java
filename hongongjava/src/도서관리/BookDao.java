@@ -29,6 +29,7 @@ public class BookDao {
 			Class.forName("oracle.jdbc.OracleDriver");
 			
 			conn = DriverManager.getConnection(url, id, pass);
+			
 			System.out.println("연결성공");
 		} catch (ClassNotFoundException e) {
 			
@@ -45,6 +46,7 @@ public class BookDao {
 		if(conn != null) {
 			try {
 				conn.close();
+				
 				System.out.println("연결끊기");
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -60,7 +62,9 @@ public class BookDao {
 		try {
 			sql = "INSERT INTO book (bnum, title, writer, price) "
 					+ "VALUES (?, ?, ?, ?)";
+			
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setString(1, book.getBnum());
 			pstmt.setString(2, book.getTitle());
 			pstmt.setString(3, book.getWriter());
@@ -73,6 +77,7 @@ public class BookDao {
 			
 			e.printStackTrace();
 		}
+		
 		getClose();
 		return 0;
 		
@@ -82,8 +87,8 @@ public class BookDao {
 	public Book selectOne(String title) {
 		getOpen();
 		
-		sql = "SELECT *"
-			+ "FROM   book"
+		sql = "SELECT * "
+			+ "FROM   book "
 			+ "WHERE  title = ?";
 		
 		try {
@@ -92,16 +97,14 @@ public class BookDao {
 			
 			ResultSet rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
-				Book bk = new Book();
-				
-				bk.setBnum(rs.getString(1));
-				bk.setTitle(rs.getString(2));
-				bk.setWriter(rs.getString(3));
-				bk.setPrice(rs.getInt(4));
-				getClose();
-				return bk;
-			}
+			Book bk = new Book();
+			
+			bk.setBnum(rs.getString(1));
+			bk.setTitle(rs.getString(2));
+			bk.setWriter(rs.getString(3));
+			bk.setPrice(rs.getInt(4));
+			getClose();
+			return bk;
 			
 		} catch (SQLException e) {
 	        e.printStackTrace();
@@ -110,6 +113,78 @@ public class BookDao {
 	} // End SelectOne
 	
 	// 5. select : 목록전체 조회 메소드
-	// 6. delete메소드 (북번호 이용)
+	public List<Book> selectAll() {
+		getOpen();
+		
+		sql = "SELECT 	* "
+			+ "FROM   	book "
+			+ "ORDER BY bnum ";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			List<Book> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				
+				String bnum = rs.getString(1);
+				String title = rs.getString(2);
+				String writer = rs.getString(3);
+				int price = rs.getInt(4);
+				
+				Book book = new Book(bnum, title, writer, price);
+				
+				list.add(book);
+			}
+			
+			getClose();
+			return list;
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	// 7. update메소드 (책 제목의 가격과 책번호 수정)
-}
+	public int update(Book book) {
+		getOpen();
+		
+		sql = "UPDATE book "
+			+ "SET    bnum = ?, title = ? "
+			+ "WHERE  title = ? ";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, book.getBnum());
+			pstmt.setInt(2, book.getPrice());
+			pstmt.setString(3, book.getTitle());
+				
+			rows = pstmt.executeUpdate();
+			
+			getClose();
+			return rows;
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
+	
+	// 6. delete메소드 (북번호 이용)
+	public int delete(String bnum) {
+		getOpen();
+		
+		sql = "";
+		
+		getClose();
+		return rows;
+	}
+	
+} // End Class

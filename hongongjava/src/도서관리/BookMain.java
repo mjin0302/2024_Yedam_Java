@@ -12,6 +12,7 @@ public class BookMain {
 		Scanner sc = new Scanner(System.in);
 		Book book = null;
 		BookDao dao = new BookDao();
+		List<Book> list = new ArrayList<>();
 		int cnt = 0;
 		
 		String bnum;
@@ -32,13 +33,13 @@ public class BookMain {
 			// 선택 1번 : 도서등록
 			case 1 :
 				System.out.println("[도서등록]");
-				System.out.println("책번호 : ");
+				System.out.print("책번호 : > ");
 				bnum = sc.nextLine();
-				System.out.println("책 제목 : ");
+				System.out.print("책 제목 : > ");
 				title = sc.nextLine();
-				System.out.println("저자 : ");
+				System.out.print("저자 : > ");
 				writer = sc.nextLine();
-				System.out.println("가격 : ");
+				System.out.print("가격 : > ");
 				int price = Integer.parseInt(sc.nextLine());
 				
 				book = new Book(bnum, title, writer, price);
@@ -57,31 +58,50 @@ public class BookMain {
 				System.out.print("검색할 도서 제목을 입력하세요 > ");
 				title = sc.nextLine();
 				
-				Book result = dao.selectOne(title);
-				System.out.println(result.getBnum());
-//				if(result != null) {
-//					
-//					
-//				} else {
-//					System.out.println("결과가 없습니다. 다시 입력하세요");
-//					continue;
-//				}
-//				
+				book = dao.selectOne(title);
+				System.out.println("번호\t제목\t\t저자\t가격");
+				System.out.println("========================================");
+				if(book != null) {
+					System.out.printf("%s\t%s\t\t%s\t%d\n", book.getBnum(), book.getTitle(), book.getTitle(), book.getPrice());
+				} else {
+					System.out.println("결과가 없습니다. 다시 입력하세요");
+					continue;
+				}
+				
 				break;
 				
 			// 선택 3번 : 도서전체 조회
 			case 3 :
+				list = dao.selectAll();
+				
+				System.out.println("번호\t제목\t\t저자\t가격");
+				System.out.println("========================================");
+				
+				for(Book temp : list) {
+					if(temp != null) {
+						System.out.printf("%s\t%s\t\t%s\t%d\n", temp.getBnum(), temp.getTitle(), temp.getTitle(), temp.getPrice());
+					} else {
+						System.out.println("결과가 없습니다.");
+						continue;
+					}
+				}
 				
 				break;
 				
 			// 선택 4번 : 도서 삭제
 			case 4 :
 				
+				
+				
 				break;
 				
 			// 선택 5번 : 도서 정보 변경
 			//			책 제목, 변경할 책 번호, 변경할 책 가격 입력 => 수정
 			case 5 :
+				// 책 제목 입력받음 
+				// 내가 하고싶은건 책 제목이 있으면 지우고 아니면 continue
+				System.out.print("변경하실 책 제목을 입력하세요 > ");
+				title = sc.nextLine();
 				
 				break;
 				
