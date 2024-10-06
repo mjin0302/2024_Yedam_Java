@@ -103,6 +103,9 @@ public class BookMain {
 				System.out.print("변경하실 책 제목을 입력하세요 > ");
 				title = sc.nextLine();
 				
+				book = new Book(title);
+				dao.update(book);
+				
 				break;
 				
 			// 선택 6번 : 프로그램 종료

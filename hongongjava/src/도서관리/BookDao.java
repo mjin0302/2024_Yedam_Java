@@ -97,18 +97,21 @@ public class BookDao {
 			
 			ResultSet rs = pstmt.executeQuery();
 			
-			Book bk = new Book();
-			
-			bk.setBnum(rs.getString(1));
-			bk.setTitle(rs.getString(2));
-			bk.setWriter(rs.getString(3));
-			bk.setPrice(rs.getInt(4));
-			getClose();
-			return bk;
+			if (rs.next()) {
+				Book bk = new Book();
+				
+				bk.setBnum(rs.getString(1));
+				bk.setTitle(rs.getString(2));
+				bk.setWriter(rs.getString(3));
+				bk.setPrice(rs.getInt(4));
+				
+				return bk;
+			}
 			
 		} catch (SQLException e) {
 	        e.printStackTrace();
 	    }
+		getClose();
 	    return null;
 	} // End SelectOne
 	
@@ -153,8 +156,11 @@ public class BookDao {
 	public int update(Book book) {
 		getOpen();
 		
+		Book result = new Book();
+		result = selectOne(book.getTitle());
+		
 		sql = "UPDATE book "
-			+ "SET    bnum = ?, title = ? "
+			+ "SET    bnum = ?, price = ? "
 			+ "WHERE  title = ? ";
 		
 		try {
